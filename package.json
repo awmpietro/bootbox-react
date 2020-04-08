@@ -1,7 +1,13 @@
 {
   "name": "bootbox-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "bootboxjs wrapped for React <http://bootboxjs.com>",
+  "keywords": [
+    "bootstrap",
+    "alert",
+    "confirm",
+    "bootbox"
+  ],
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -37,8 +37,9 @@ export default App
 	
 ```
 ## Props
-| show        | type               | message        | onSuccess                       | onCancel                       |
-|-------------|--------------------|----------------|---------------------------------|--------------------------------|
-| bool        | string             | string         | function                        | function                       |
-| required    | required           | required       | optional                        | optional                       |
-| true, false | "alert", "confirm" | "Your message" | callback function to handle Yes | callback function to handle No |
+| #               | show        | type               | message        | onSuccess                       | onCancel                       |
+|-----------------|-------------|--------------------|----------------|---------------------------------|--------------------------------|
+| PropType        | bool        | string             | string         | function                        | function                       |
+| Is Required     | required    | required           | required       | optional                        | optional                       |
+| Accepted Values | true, false | "alert", "confirm" | "Your message" | callback function to handle Yes | callback function to handle No |
+| Default         | false       | null               | ""             | null                            | null                           |
