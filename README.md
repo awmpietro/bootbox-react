@@ -14,21 +14,41 @@ import  React, {useState} from  'react';
 import  Bootbox  from  'bootbox-react';
 ...
 function  App() {
-	const [show, setShow] = useState(false);
+	const [showConfirm, setShowConfirm] = useState(false);
+	const [showAlert, setShowAlert] = useState(false)
 	
-	const  handleYes = () => {
+	const handleConfirm = () => {
 		console.log("You clicked Yes!");
-		return setIsShow(false);
+		return setShowConfirm(false);
 	}
 	
-	const  handleNo = () => {
+	const handleCancel = () => {
 		console.log("You clicked No!");
-		return  setIsShow(false);
+		return setShowConfirm(false);
 	}
+
+	const handleClose = () => {
+		console.log("You closed Alert!");
+		return setShowAlert(false);
+	}
+
 	return(
 		<>
-		<button onClick={ () => setShow(true) } Confirm </button>
-		<Bootbox  show={show}  type={"confirm"}  message={"Do That?"}  onSuccess={handleYes}  onCancel={handleNo}  />
+			<button onClick={ () => setShowConfirm(true) } Confirm </button>
+			<Bootbox show={showConfirm} 
+				type={"confirm"}  
+				message={"Do That?"}  
+				onSuccess={handleYes}  
+				onCancel={handleNo}  
+				onClose={handleNo} 
+			/>
+
+			<button onClick={ () => setShowAlert(true) } Alert </button>
+			<Bootbox show={showAlert} 
+				type={"alert"}  
+				message={"This is a simple alert"}  
+				onClose={handleClose} 
+			/>
 		</>
 	)
 }
