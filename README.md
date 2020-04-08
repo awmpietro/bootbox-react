@@ -37,7 +37,7 @@ export default App
 	
 ```
 ## Props
-| Name            | show        | type               | message        | onSuccess                       | onCancel                       | onClose                                      | cancelClassNames                      | successClassNames                      | cancelLabel                          | successLabel                          |
+| #               | show        | type               | message        | onSuccess                       | onCancel                       | onClose                                      | cancelClassNames                      | successClassNames                      | cancelLabel                          | successLabel                          |
 |-----------------|-------------|--------------------|----------------|---------------------------------|--------------------------------|----------------------------------------------|---------------------------------------|----------------------------------------|--------------------------------------|---------------------------------------|
 | PropType        | bool        | string             | string         | function                        | function                       | function                                     | string                                | string                                 | string                               | string                                |
 | Is Required     | required    | required           | required       | optional                        | optional                       | required                                     | optional                              | optional                               | optional                             | optional                              |
