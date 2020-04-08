@@ -1,66 +1,87 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import 'jquery/dist/jquery.min.js';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import bootbox from 'bootbox';
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "jquery/dist/jquery.min.js";
+import PropTypes from "prop-types";
+import bootbox from "bootbox";
 
-function Bootbox(props) {
-    
-    const balert = () => {
-        bootbox.alert(props.message)
-    }
+const Bootbox = (props) => {
+  const balert = () => {
+      bootbox.alert({
+        message: props.message,
+        callback: function () {
+          props.onClose();
+        },
+      });
+    },
+    bconfirm = () => {
+      bootbox.confirm({
+        buttons: {
+          cancel: {
+            className: props.cancelClassNames,
+            label: props.cancelLabel,
+          },
+          confirm: {
+            className: props.successClassNames,
+            label: props.successLabel,
+          },
+        },
+        callback: (result) => {
+          if (result) {
+            props.onSuccess();
+          } else {
+            props.onCancel();
+          }
+        },
+        message: props.message,
+      });
+    };
 
-    const bconfirm = () => {
-        bootbox.confirm({
-            message: props.message,
-            buttons: {
-                confirm: {
-                    label: 'Yes',
-                    className: 'btn-primary'
-                },
-                cancel: {
-                    label: 'No',
-                    className: 'btn-danger'
-                }
-            },
-            callback: result => {
-                if(result){
-                    props.onSuccess()
-                } else {
-                    props.onCancel()
-                }
-            }
-        });
+  if (props.show) {
+    switch (props.type) {
+      case "alert":
+        balert();
+        break;
+      case "confirm":
+        bconfirm();
+        break;
+      default:
+        break;
     }
-    
-    if(props.show){
-        switch (props.type) {
-            case "alert":
-                balert();
-                break;
-            case "confirm":
-                bconfirm();
-                break; 
-            default:
-            break;
-        }
-    }
-    return null
-}
+  }
+  return null;
+};
+
+Bootbox.defaultProps = {
+  cancelClassNames: "btn-danger",
+  cancelLabel: "No",
+  message: "",
+  show: false,
+  successClassNames: "btn-primary",
+  successLabel: "Yes",
+};
 
 Bootbox.propTypes = {
-    show: PropTypes.bool.isRequired,
-    message: PropTypes.string.isRequired,
-    onSuccess: PropTypes.oneOfType([
-        PropTypes.func,
-        PropTypes.instanceOf(null)
-    ]),
-    onCancel: PropTypes.oneOfType([
-        PropTypes.func,
-        PropTypes.instanceOf(null)
-    ])
-}
-
+  cancelClassNames: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(null),
+  ]),
+  cancelLabel: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(null),
+  ]),
+  message: PropTypes.string.isRequired,
+  onCancel: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(null)]),
+  onClose: PropTypes.func.isRequired,
+  onSuccess: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(null)]),
+  show: PropTypes.bool.isRequired,
+  successClassNames: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(null),
+  ]),
+  successLabel: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(null),
+  ]),
+};
 
 export default Bootbox;

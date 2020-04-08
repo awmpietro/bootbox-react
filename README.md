@@ -37,9 +37,9 @@ export default App
 	
 ```
 ## Props
-| #               | show        | type               | message        | onSuccess                       | onCancel                       |
-|-----------------|-------------|--------------------|----------------|---------------------------------|--------------------------------|
-| PropType        | bool        | string             | string         | function                        | function                       |
-| Is Required     | required    | required           | required       | optional                        | optional                       |
-| Accepted Values | true, false | "alert", "confirm" | "Your message" | callback function to handle Yes | callback function to handle No |
-| Default         | false       | null               | ""             | null                            | null                           |
+| Name            | show        | type               | message        | onSuccess                       | onCancel                       | onClose                                      | cancelClassNames                      | successClassNames                      | cancelLabel                          | successLabel                          |
+|-----------------|-------------|--------------------|----------------|---------------------------------|--------------------------------|----------------------------------------------|---------------------------------------|----------------------------------------|--------------------------------------|---------------------------------------|
+| PropType        | bool        | string             | string         | function                        | function                       | function                                     | string                                | string                                 | string                               | string                                |
+| Is Required     | required    | required           | required       | optional                        | optional                       | required                                     | optional                              | optional                               | optional                             | optional                              |
+| Accepted Values | true, false | "alert", "confirm" | "Your message" | callback function to handle Yes | callback function to handle No | callback function to call when box is closed | classname(s) to apply to "No" button" | classname(s) to apply to "Yes" button" | Custom label to apply to "No" button | Custom label to apply to "Yes" button |
+| Default         | false       | null               | ""             | null                            | null                           | null                                         | "btn-danger"                          | "btn-primary"                          | "No"                                 | "Yes"                                 |

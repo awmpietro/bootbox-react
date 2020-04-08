@@ -2,6 +2,7 @@
   "name": "bootbox-react",
   "version": "1.0.2",
   "description": "bootboxjs wrapped for React <http://bootboxjs.com>",
+  "homepage" : "https://github.com/awmpietro/bootbox-react",
   "keywords": [
     "bootstrap",
     "alert",
