@@ -1,6 +1,6 @@
 {
   "name": "bootbox-react",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "bootboxjs wrapped for React <http://bootboxjs.com>",
   "homepage": "https://github.com/awmpietro/bootbox-react",
   "keywords": [
