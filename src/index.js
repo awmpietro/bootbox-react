@@ -34,7 +34,15 @@ const Bootbox = (props) => {
         },
         message: props.message,
       });
-    };
+    },
+    bprompt = () => {
+      bootbox.prompt({
+        title: props.message,
+        callback: (result) => {
+          props.onPrompt(result);
+        }
+      })
+    }
 
   if (props.show) {
     switch (props.type) {
@@ -44,7 +52,11 @@ const Bootbox = (props) => {
       case "confirm":
         bconfirm();
         break;
+      case "prompt":
+        bprompt();
+        break;
       default:
+        balert();
         break;
     }
   }
@@ -71,8 +83,9 @@ Bootbox.propTypes = {
   ]),
   message: PropTypes.string.isRequired,
   onCancel: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(null)]),
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(null)]),
   onSuccess: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(null)]),
+  onPrompt: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(null)]),
   show: PropTypes.bool.isRequired,
   successClassNames: PropTypes.oneOfType([
     PropTypes.string,
